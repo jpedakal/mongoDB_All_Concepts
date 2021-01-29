@@ -67,8 +67,18 @@ db.inventory.find( { "size.uom": "in" } );
 db.inventory.find( { "size.h": { $lt: 15 }, "size.uom": "in", status: "D" } );
 
 
+Match an Array
+--------------------------------------------------------------------------------------------------------
+--> The following example queries for all documents where the field tags value is an array with exactly two 
+    elements, "red" and "blank", in the specified order:
+
+    db.inventory.find( { tags: ["red", "blank"] } );
 
 
+--> If, instead, you wish to find an array that contains both the elements "red" and "blank", without 
+    regard to order or other elements in the array, use the $all operator:
+
+    db.inventory.find( { tags: { $all: ["red", "blank"] } } )
 
 
 
