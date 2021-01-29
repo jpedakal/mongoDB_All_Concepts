@@ -40,14 +40,31 @@ less than ($lt) 30
 db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } );
 
 
+Specify AND as well as OR Conditions
+------------------------------------------------------------------------------------------------------
+In the following example, the compound query document selects all documents in the collection where the 
+status equals "A" and either qty is less than ($lt) 30 or item starts with the character p
+
+db.inventory.find( {
+     status: "A",
+     $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
+} );
+
+Match an Embedded/Nested Document
+--------------------------------------------------------------------------------------------------------
+For example, the following query selects all documents where the field size equals the document 
+{ h: 14, w: 21, uom: "cm" }
+
+db.inventory.find( { size: { h: 14, w: 21, uom: "cm" } } )
 
 
+Query on Nested Field
+--------------------------------------------------------------------------------------------------------
+The following example selects all documents where the field uom nested in the size field equals "in":
 
+db.inventory.find( { "size.uom": "in" } );
 
-
-
-
-
+db.inventory.find( { "size.h": { $lt: 15 }, "size.uom": "in", status: "D" } );
 
 
 
