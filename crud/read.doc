@@ -21,7 +21,51 @@ either "A" or "D"
 db.inventory.find( { status: { $in: [ "A", "D" ] } } );
 
 
-$in --> Operators
+$in --> Operator
+
+
+Specify AND Conditions
+----------------------------------------------------------------------------------------------------
+The following example retrieves all documents in the inventory collection where the status equals "A" 
+and qty is less than ($lt) 30
+
+db.inventory.find( { status: "A", qty: { $lt: 30 } } );
+
+
+Specify OR Conditions
+-----------------------------------------------------------------------------------------------------
+The following example retrieves all documents in the collection where the status equals "A" or qty is 
+less than ($lt) 30
+
+db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
