@@ -78,8 +78,19 @@ Match an Array
 --> If, instead, you wish to find an array that contains both the elements "red" and "blank", without 
     regard to order or other elements in the array, use the $all operator:
 
-    db.inventory.find( { tags: { $all: ["red", "blank"] } } )
+    db.inventory.find( { tags: { $all: ["red", "blank"] } } );
 
+
+Query an Array for an Element
+-------------------------------------------------------------------------------------------------------
+The following example queries for all documents where tags is an array that contains the string "red" 
+as one of its elements:
+
+db.inventory.find( { tags: "red" } );
+
+
+Query an Array with Compound Filter Conditions on the Array Elements
+------------------------------------------------------------------------------------------------------
 
 
 
