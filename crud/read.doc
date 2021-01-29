@@ -1,0 +1,7 @@
+--> To project name and price details from product collection.
+
+    db.product.find( {}, { name: 1, price: 1 } );
+
+--> To project name and price details and exclude "_id" from product collection.
+
+    db.product.find( {}, { _id:0, name: 1, price: 1 } );
