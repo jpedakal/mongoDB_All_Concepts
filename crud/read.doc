@@ -1,3 +1,30 @@
+Select All Documents in a Collection
+----------------------------------------------------------------------------------------------------
+To select all documents in the collection, pass an empty document as the query filter parameter 
+to the find method. The query filter parameter determines the select criteria.
+
+    db.inventory.find({});
+
+
+Specify Equality Condition
+---------------------------------------------------------------------------------------------------
+The following example selects from the inventory collection all documents where the status equals "D"
+
+    db.inventory.find({ status: "D" });
+
+
+Specify Conditions Using Query Operators
+---------------------------------------------------------------------------------------------------
+The following example retrieves all documents from the inventory collection where status equals 
+either "A" or "D"
+
+db.inventory.find( { status: { $in: [ "A", "D" ] } } );
+
+
+$in --> Operators
+
+
+
 --> To project name and price details from product collection.
 
     db.product.find( {}, { name: 1, price: 1 } );
