@@ -98,7 +98,6 @@ Query an Array with Compound Filter Conditions on the Array Elements
 
 
 
-
 --> To project name and price details from product collection.
 
     db.product.find( {}, { name: 1, price: 1 } );
