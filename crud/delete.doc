@@ -26,4 +26,4 @@ To delete at most a single document that matches a specified filter (even though
 
 The following example deletes the first document where status is "D":
 
-db.inventory.deleteOne( { status: "D" } )
+db.inventory.deleteOne( { status: "D" } );
