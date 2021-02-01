@@ -100,4 +100,3 @@ Query an Array with Compound Filter Conditions on the Array Elements
 --> To project name and price details and exclude "_id" from product collection.
 
     db.product.find( {}, { _id:0, name: 1, price: 1 } );
-    
