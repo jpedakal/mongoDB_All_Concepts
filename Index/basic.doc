@@ -3,4 +3,3 @@
     to select those documents that match the query statement. 
 --> If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents 
     it must inspect.
-    
