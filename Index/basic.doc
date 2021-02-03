@@ -8,3 +8,4 @@
 --> MongoDB creates a unique index on the _id field during the creation of a collection.
 --> The _id index prevents clients from inserting two documents with the same value for the _id field. 
 --> You cannot drop this index on the _id field.
+--> To create an index using the Node.JS driver, use createIndex().
