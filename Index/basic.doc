@@ -9,3 +9,8 @@
 --> The _id index prevents clients from inserting two documents with the same value for the _id field. 
 --> You cannot drop this index on the _id field.
 --> To create an index using the Node.JS driver, use createIndex().
+ 
+        collection.createIndex( { <key and index type specification> }, function(err, result) {
+        console.log(result);
+        callback(result);
+        }
