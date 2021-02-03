@@ -21,3 +21,7 @@
         console.log(result);
         callback(result);
         }
+
+--> The createIndex() method only creates an index if an index of the same specification does not 
+    already exist.
+
