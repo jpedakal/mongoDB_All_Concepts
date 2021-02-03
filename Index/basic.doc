@@ -3,4 +3,8 @@
     to select those documents that match the query statement. 
 --> If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents 
     it must inspect.
-    
+
+
+--> MongoDB creates a unique index on the _id field during the creation of a collection.
+--> The _id index prevents clients from inserting two documents with the same value for the _id field. 
+--> You cannot drop this index on the _id field.
