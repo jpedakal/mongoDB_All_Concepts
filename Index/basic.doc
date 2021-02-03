@@ -14,3 +14,10 @@
         console.log(result);
         callback(result);
         }
+
+--> The following example creates a single key descending index on the name field:
+
+        collection.createIndex( { name : -1 }, function(err, result) {
+        console.log(result);
+        callback(result);
+        }
