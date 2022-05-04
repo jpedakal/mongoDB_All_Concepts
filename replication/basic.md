@@ -20,6 +20,6 @@ The section also provides tutorials for common tasks related to replica sets.
 * This includes time required to mark the primary as unavailable and call and complete an election. 
 * You can tune this time period by modifying the `settings.electionTimeoutMillis` replication configuration option. 
 * Factors such as network latency may extend the time required for replica set elections to complete, which in turn affects the amount of time your cluster may operate without a primary. These factors are dependent on your particular cluster architecture.
-* Lowering the `electionTimeoutMillis1 replication configuration option from the default 10000 (10 seconds) can result in faster detection of primary failure. 
+* Lowering the `electionTimeoutMillis` replication configuration option from the default 10000 (10 seconds) can result in faster detection of primary failure. 
 * However, the cluster may call elections more frequently due to factors such as temporary network latency even if the primary is otherwise healthy. This can result in increased rollbacks for w : 1 write operations.
 
