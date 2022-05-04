@@ -23,3 +23,7 @@ The section also provides tutorials for common tasks related to replica sets.
 * Lowering the `electionTimeoutMillis` replication configuration option from the default 10000 (10 seconds) can result in faster detection of primary failure. 
 * However, the cluster may call elections more frequently due to factors such as temporary network latency even if the primary is otherwise healthy. This can result in increased rollbacks for w : 1 write operations.
 
+<b>Read Operations</b>
+
+* By default, clients read from the primary [1]; however, clients can specify a read preference to send read operations to secondaries.
+![aaa](https://user-images.githubusercontent.com/40006634/166708556-4913db38-0ebb-4995-a0ff-14ca5d63e75e.png)
