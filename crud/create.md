@@ -1,5 +1,5 @@
-    To insert a single document into collection. If the document does not 
-    specify an _id field, MongoDB adds the _id field with an ObjectId value to the new document.
+To insert a single document into collection.<\n>
+If the document does not specify an _id field, MongoDB adds the _id field with an ObjectId value to the new document.
 
     db.inventory.insertOne({ item: "canvas", qty: 100, tags: ["cotton"], size: { h: 28, w: 35.5}});
 
