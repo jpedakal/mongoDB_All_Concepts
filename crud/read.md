@@ -18,7 +18,7 @@ Specify Conditions Using Query Operators
 The following example retrieves all documents from the inventory collection where status equals 
 either "A" or "D"
 
-db.inventory.find( { status: { $in: [ "A", "D" ] } } );
+    db.inventory.find( { status: { $in: [ "A", "D" ] } } );
 
 
 $in --> Operator
@@ -29,7 +29,7 @@ Specify AND Conditions
 The following example retrieves all documents in the inventory collection where the status equals "A" 
 and qty is less than ($lt) 30
 
-db.inventory.find( { status: "A", qty: { $lt: 30 } } );
+    db.inventory.find( { status: "A", qty: { $lt: 30 } } );
 
 
 Specify OR Conditions
@@ -37,7 +37,7 @@ Specify OR Conditions
 The following example retrieves all documents in the collection where the status equals "A" or qty is 
 less than ($lt) 30
 
-db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } );
+    db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } );
 
 
 Specify AND as well as OR Conditions
@@ -45,38 +45,38 @@ Specify AND as well as OR Conditions
 In the following example, the compound query document selects all documents in the collection where the 
 status equals "A" and either qty is less than ($lt) 30 or item starts with the character p
 
-db.inventory.find( {
-     status: "A",
-     $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
-} );
+    db.inventory.find( {
+         status: "A",
+         $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
+    } );
 
 Match an Embedded/Nested Document
 --------------------------------------------------------------------------------------------------------
 For example, the following query selects all documents where the field size equals the document 
 { h: 14, w: 21, uom: "cm" }
 
-db.inventory.find( { size: { h: 14, w: 21, uom: "cm" } } )
+    db.inventory.find( { size: { h: 14, w: 21, uom: "cm" } } )
 
 
 Query on Nested Field
 --------------------------------------------------------------------------------------------------------
 The following example selects all documents where the field uom nested in the size field equals "in":
 
-db.inventory.find( { "size.uom": "in" } );
+    db.inventory.find( { "size.uom": "in" } );
 
-db.inventory.find( { "size.h": { $lt: 15 }, "size.uom": "in", status: "D" } );
+    db.inventory.find( { "size.h": { $lt: 15 }, "size.uom": "in", status: "D" } );
 
 
 Match an Array
 --------------------------------------------------------------------------------------------------------
---> The following example queries for all documents where the field tags value is an array with exactly two 
-    elements, "red" and "blank", in the specified order:
+The following example queries for all documents where the field tags value is an array with exactly two 
+elements, "red" and "blank", in the specified order:
 
     db.inventory.find( { tags: ["red", "blank"] } );
 
 
---> If, instead, you wish to find an array that contains both the elements "red" and "blank", without 
-    regard to order or other elements in the array, use the $all operator:
+If, instead, you wish to find an array that contains both the elements "red" and "blank", without 
+regard to order or other elements in the array, use the $all operator:
 
     db.inventory.find( { tags: { $all: ["red", "blank"] } } );
 
@@ -86,18 +86,17 @@ Query an Array for an Element
 The following example queries for all documents where tags is an array that contains the string "red" 
 as one of its elements:
 
-db.inventory.find( { tags: "red" } );
+    db.inventory.find( { tags: "red" } );
 
 
 Query an Array with Compound Filter Conditions on the Array Elements
 --------------------------------------------------------------------------------------------
 
-
---> To project name and price details from product collection.
+To project name and price details from product collection.
 
     db.product.find( {}, { name: 1, price: 1 } );
 
---> To project name and price details and exclude "_id" from product collection.
+To project name and price details and exclude "_id" from product collection.
 
     db.product.find( {}, { _id:0, name: 1, price: 1 } );
     
