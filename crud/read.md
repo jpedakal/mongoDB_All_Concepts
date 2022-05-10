@@ -100,3 +100,42 @@ To project name and price details and exclude "_id" from product collection.
 
     db.product.find( {}, { _id:0, name: 1, price: 1 } );
     
+Query for an Element by the Array Index Position
+-----------------------------------------------------
+Using dot notation, you can specify query conditions for an element at a particular index or position of the array. The array uses zero-based indexing.
+The following example queries for all documents where the second element in the array dim_cm is greater than 25:
+
+    db.inventory.find( { "dim_cm.1": { $gt: 25 } } )
+    
+Query an Array by Array Length
+-------------------------------
+Use the $size operator to query for arrays by number of elements. For example, the following selects documents where the array tags has 3 elements.
+
+    db.inventory.find( { "tags": { $size: 3 } } )
+    
+Query an Array with Compound Filter Conditions on the Array Elements
+--------------------------------------------------------------------
+The following example queries for documents where the dim_cm array contains elements that in some combination satisfy the query conditions; e.g., one element can satisfy the greater than 15 condition and another element can satisfy the less than 20 condition, or a single element can satisfy both:
+
+    db.inventory.find( { dim_cm: { $gt: 15, $lt: 20 } } )
+    
+Query for an Array Element that Meets Multiple Criteria
+--------------------------------------------------------
+Use $elemMatch operator to specify multiple criteria on the elements of an array such that at least one array element satisfies all the specified criteria.
+The following example queries for documents where the dim_cm array contains at least one element that is both greater than ($gt) 22 and less than ($lt) 30:
+
+    db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
+    
+Query for a Document Nested in an Array
+---------------------------------------
+The following example selects all documents where an element in the instock array matches the specified document:
+
+    db.inventory.find( { "instock": { warehouse: "A", qty: 5 } } )
+    
+Specify a Query Condition on a Field Embedded in an Array of Documents
+---------------------------------------------------------------------
+If you do not know the index position of the document nested in the array, concatenate the name of the array field, with a dot (.) and the name of the field in the nested document.
+
+The following example selects all documents where the instock array has at least one embedded document that contains the field qty whose value is less than or equal to 20:
+
+    db.inventory.find( { 'instock.qty': { $lte: 20 } } )
