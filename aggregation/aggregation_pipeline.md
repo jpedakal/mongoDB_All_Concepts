@@ -18,16 +18,29 @@ Calculate Total Order Quantity
 ------------------------------
 The following aggregation pipeline example contains two stages and returns the total order quantity of medium size pizzas grouped by pizza name:
 
-      db.orders.aggregate( [
+           db.orders.aggregate( [
 
-         // Stage 1: Filter pizza order documents by pizza size
+         // Stage 1: Filter pizza order documents by date range
          {
-            $match: { size: "medium" }
+            $match:
+            {
+               "date": { $gte: new ISODate( "2020-01-30" ), $lt: new ISODate( "2022-01-30" ) }
+            }
          },
 
-         // Stage 2: Group remaining documents by pizza name and calculate total quantity
+         // Stage 2: Group remaining documents by date and calculate results
          {
-            $group: { _id: "$name", totalQuantity: { $sum: "$quantity" } }
+            $group:
+            {
+               _id: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+               totalOrderValue: { $sum: { $multiply: [ "$price", "$quantity" ] } },
+               averageOrderQuantity: { $avg: "$quantity" }
+            }
+         },
+
+         // Stage 3: Sort documents by totalOrderValue in descending order
+         {
+            $sort: { totalOrderValue: -1 }
          }
 
-      ] )
+       ] )
