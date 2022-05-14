@@ -24,3 +24,22 @@
 
 * The createIndex() method only creates an index if an index of the same specification does not 
   already exist.
+  
+You can view index names using the `db.collection.getIndexes()` method. You cannot rename an index once created. Instead, you must drop and re-create the index with a new name.
+
+    db.collection.getIndexes()
+
+
+Index Types
+-----------
+MongoDB provides a number of different index types to support specific types of data and queries.
+
+* Single Fiels Indexes
+* Compound Indexes
+* MultiKey Indexes
+* Text Indexes
+* Wildcard Indexes
+* 2d Indexes
+* 2dsphere Indexes
+* geoHaystack Indexes
+* Hashed Indexes
