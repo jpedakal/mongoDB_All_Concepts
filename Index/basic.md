@@ -43,3 +43,24 @@ MongoDB provides a number of different index types to support specific types of 
 * 2dsphere Indexes
 * geoHaystack Indexes
 * Hashed Indexes
+
+Single Field Indexes
+--------------------
+MongoDB provides complete support for indexes on any field in a collection of documents. By default, all collections have an index on the _id field, and applications and users may add additional indexes to support important queries and operations.
+
+This document describes ascending/descending indexes on a single field.
+
+The following operation creates an ascending index on the score field of the records collection:
+
+    db.records.createIndex( { score: 1 } )
+    
+<b>Create an Index on an Embedded Field:</b>
+
+The following operation creates an index on the location.state field:
+
+    db.records.createIndex( { "location.state": 1 } )
+
+Compound Indexes
+----------------
+
+
